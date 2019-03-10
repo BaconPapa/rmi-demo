@@ -2,6 +2,9 @@ package com.papa.model;
 
 import java.io.Serializable;
 
+/**
+ * User model
+ */
 public class User implements Serializable {
     private static final long serialVersionUID = -5543758116726988621L;
 

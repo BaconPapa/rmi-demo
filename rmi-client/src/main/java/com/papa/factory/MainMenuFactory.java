@@ -3,18 +3,26 @@ package com.papa.factory;
 import com.papa.controller.*;
 import com.papa.service.UserService;
 
+/**
+ * It can generate new main menu controller
+ */
 public class MainMenuFactory {
-    public Controller getMainController(UserService userService) {
-        MainController mainController = new MainController("Main Menu");
+
+    /**
+     * @param userService user service to process user object
+     * @return main menu controller
+     */
+    public Controller getMainMenuController(UserService userService) {
+        MenuController mainMenu = new MenuController("Main Menu");
         Controller quitController = new QuitController();
-        mainController.addController("3", quitController);
-        Controller signUpController = new SignUpController(mainController, userService);
-        mainController.addController("2", signUpController);
-        MainController loginSubMenu = new MainController("Login Menu");
-        loginSubMenu.addController("1", mainController);
+        mainMenu.addController("3", quitController);
+        Controller signUpController = new SignUpController(mainMenu, userService);
+        mainMenu.addController("2", signUpController);
+        MenuController loginSubMenu = new MenuController("Login Menu");
+        loginSubMenu.addController("1", mainMenu);
         loginSubMenu.addController("2", quitController);
-        LoginController loginController = new LoginController(mainController, loginSubMenu, userService);
-        mainController.addController("1", loginController);
-        return mainController;
+        LoginController loginController = new LoginController(mainMenu, loginSubMenu, userService);
+        mainMenu.addController("1", loginController);
+        return mainMenu;
     }
 }

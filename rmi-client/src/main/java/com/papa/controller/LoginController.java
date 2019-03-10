@@ -8,12 +8,20 @@ import com.papa.util.InputUtil;
 
 import java.rmi.RemoteException;
 
+/**
+ * Login Process
+ */
 public class LoginController extends Controller {
-    private MainController mainMenu;
-    private MainController subMenu;
+    private MenuController mainMenu;
+    private MenuController subMenu;
     private UserService userService;
 
-    public LoginController(MainController mainMenu, MainController subMenu, UserService userService) {
+    /**
+     * @param mainMenu First level menu
+     * @param subMenu Sub menu shown after login complete
+     * @param userService it is used to validate user info
+     */
+    public LoginController(MenuController mainMenu, MenuController subMenu, UserService userService) {
         title = "Log In";
         this.userService = userService;
         this.mainMenu = mainMenu;
@@ -35,11 +43,19 @@ public class LoginController extends Controller {
         }
     }
 
+    /**
+     * back to the main menu
+     */
     private void back() {
         System.out.println("Back to main menu");
         mainMenu.execute();
     }
 
+    /**
+     * @param result the result for validate user's password
+     * If user inputs correct password, it will show the subMenu.
+     * Otherwise, it will back to the main menu
+     */
     private void resultProcess(boolean result) {
         if (result) {
             System.out.println("Login success");

@@ -7,6 +7,9 @@ import com.papa.model.User;
 import java.io.File;
 import java.sql.*;
 
+/**
+ * Data Access Object
+ */
 public class DAO {
     public DAO() {
         try {
@@ -18,6 +21,10 @@ public class DAO {
         databaseInit();
     }
 
+    /**
+     * @param user user model which need to be added to the database
+     * Add user to database
+     */
     public void addUser(User user) {
         sqlTemplate(connection -> {
             String sql = "insert into user (account, password) values (?, ?)";
@@ -31,6 +38,10 @@ public class DAO {
         });
     }
 
+    /**
+     * @param account account string
+     * @return a user with the same account of parameter, return null if none of any users has that account
+     */
     public User getUserByAccount(String account) {
         final User[] user = {null};
         sqlTemplate(connection -> {
@@ -52,6 +63,10 @@ public class DAO {
         return user[0];
     }
 
+    /**
+     * Init database while launched
+     * If database file does not exist, it will generate both the database file and the user table to complete the initialization
+     */
     private void databaseInit() {
         String path = Config.databasePath;
         File databaseFile = new File(path);
@@ -76,10 +91,17 @@ public class DAO {
         }
     }
 
+    /**
+     * @return SQL connection
+     * @throws SQLException throws while databaseURL is incorrect
+     */
     private Connection createConnection() throws SQLException {
         return DriverManager.getConnection(Config.databaseURL);
     }
 
+    /**
+     * @param query specific query process
+     */
     private void sqlTemplate(SQLQuery query) {
         try(Connection connection = createConnection()) {
             query.query(connection);
@@ -89,6 +111,10 @@ public class DAO {
         }
     }
 
+    /**
+     * query database
+     * it's used to take lambda function
+     */
     interface SQLQuery {
         void query(Connection connection) throws SQLException;
     }

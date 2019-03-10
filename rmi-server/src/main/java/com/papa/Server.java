@@ -14,8 +14,11 @@ import java.rmi.server.UnicastRemoteObject;
 public class Server {
     public static void main(String[] args){
         try{
+            // export user service
             UserServiceImpl userServiceImpl = new UserServiceImpl();
             UserService userService = (UserService) UnicastRemoteObject.exportObject(userServiceImpl, 0);
+
+            // user service registry and port bind
             Registry registry = LocateRegistry.createRegistry(Config.serverPort);
             registry.bind(Config.userServerName, userService);
             System.out.printf(

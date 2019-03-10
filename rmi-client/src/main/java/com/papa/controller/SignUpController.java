@@ -8,11 +8,19 @@ import com.papa.util.InputUtil;
 
 import java.rmi.RemoteException;
 
+/**
+ * It is used to sign up
+ */
 public class SignUpController extends Controller{
-    private MainController mainController;
+    private MenuController mainMenu;
     private UserService userService;
-    public SignUpController(MainController mainController, UserService userService) {
-        this.mainController = mainController;
+
+    /**
+     * @param mainMenu main menu
+     * @param userService user service to add new user
+     */
+    public SignUpController(MenuController mainMenu, UserService userService) {
+        this.mainMenu = mainMenu;
         this.userService = userService;
         this.title = "Sign Up";
     }
@@ -29,7 +37,7 @@ public class SignUpController extends Controller{
             System.out.println(ErrorMessage.USER_ALREADY_EXISTS_ERROR);
         } finally {
             System.out.println("Back to main menu");
-            mainController.execute();
+            mainMenu.execute();
         }
     }
 }

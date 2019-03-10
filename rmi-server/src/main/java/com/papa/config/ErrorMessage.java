@@ -1,5 +1,8 @@
 package com.papa.config;
 
+/**
+ * Config file to handle error message
+ */
 public class ErrorMessage {
     public static final String CONFIG_INIT_ERROR = "ERROR: config file init error";
     public static final String DATABASE_DRIVER_ERROR = "ERROR: database driver not found";

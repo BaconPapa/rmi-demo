@@ -1,5 +1,8 @@
 package com.papa.config;
 
+/**
+ * Config file to handle error message
+ */
 public class ErrorMessage {
     public static final String CONFIG_INIT_ERROR = "ERROR: config file init error";
     public static final String MAIN_ERROR = "ERROR: program error";

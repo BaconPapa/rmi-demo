@@ -8,6 +8,11 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.Serializable;
 
+/**
+ * Implementation for UserService
+ * Run on server
+ * Invoke on client
+ */
 public class UserServiceImpl implements UserService, Serializable {
     private static final long serialVersionUID = -8600316483988232322L;
     private DAO dao;

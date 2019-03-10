@@ -7,9 +7,15 @@ import com.papa.service.UserService;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+/**
+ * It is used to generate user service
+ */
 public class UserServiceFactory {
     private UserService userService;
 
+    /**
+     * Link to server and get user service object on server
+     */
     public UserServiceFactory() {
         try {
             Registry registry = LocateRegistry.getRegistry(Config.host, Config.port);
@@ -21,6 +27,10 @@ public class UserServiceFactory {
         }
     }
 
+
+    /**
+     * Get the userService which is exactly running on server
+     */
     public UserService getUserService() {
         return userService;
     }

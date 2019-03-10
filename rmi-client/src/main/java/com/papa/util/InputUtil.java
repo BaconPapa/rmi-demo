@@ -5,6 +5,10 @@ import com.papa.model.User;
 import java.util.Scanner;
 
 public class InputUtil {
+    /**
+     * @param name name for tip for incorrect input
+     * @return
+     */
     public static String getInput(String name) {
         Scanner scanner = new Scanner(System.in);
         String inputString = scanner.nextLine().trim();
@@ -15,6 +19,9 @@ public class InputUtil {
         return inputString;
     }
 
+    /**
+     * @return user object for keyboard input
+     */
     public static User getUserFromInput() {
         System.out.print("Please Input the account: ");
         String account = InputUtil.getInput("account");

@@ -3,6 +3,10 @@ package com.papa.config;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Config file
+ * It read the property file first
+ */
 public class Config {
     public static String host;
     public static int port;
